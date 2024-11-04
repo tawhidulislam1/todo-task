@@ -1,0 +1,231 @@
+
+
+[
+    {
+      "product_id": "M001",
+      "product_title": "Smartphone X10",
+      "product_image": "https://i.ibb.co.com/3hfBchr/71-Q-e-GULj-S.jpg",
+      "category": "Mobile",
+      "price": 499.99,
+      "description": "A high-performance smartphone with a sleek design and advanced features.",
+      "specification": [
+        { "key": "Screen Size", "value": "6.5 inches" },
+        { "key": "Battery Life", "value": "24 hours" },
+        { "key": "Camera", "value": "48 MP" },
+        { "key": "Storage", "value": "128 GB" },
+        { "key": "RAM", "value": "8 GB" }
+      ],
+      "availability": true,
+      "rating": 4.5,
+      "other": {
+        "warranty": "2 years",
+        "color": "Midnight Black",
+        "brand": "TechBrand",
+        "model_number": "X10-2023"
+      }
+    },
+    {
+      "product_id": "M002",
+      "product_title": "Smartphone Y5 Pro",
+      "product_image": "https://i.ibb.co.com/hytNWH5/y5-midnightblack.png",
+      "category": "Mobile",
+      "price": 299.99,
+      "description": "Compact smartphone with high-resolution camera and fast performance.",
+      "specification": [
+        { "key": "Screen Size", "value": "5.8 inches" },
+        { "key": "Battery Life", "value": "20 hours" },
+        { "key": "Camera", "value": "12 MP" },
+        { "key": "Storage", "value": "64 GB" },
+        { "key": "RAM", "value": "4 GB" }
+      ],
+      "availability": true,
+      "rating": 4.3,
+      "other": {
+        "warranty": "1 year",
+        "color": "Blue",
+        "brand": "TechBrand",
+        "model_number": "Y5-2023"
+      }
+    },
+    {
+      "product_id": "M003",
+      "product_title": "Smartphone Z20 Ultra",
+      "product_image": "https://i.ibb.co.com/9gJkQS8/images-1.jpg",
+      "category": "Mobile",
+      "price": 799.99,
+      "description": "Premium smartphone with cutting-edge features and high-end specifications.",
+      "specification": [
+        { "key": "Screen Size", "value": "6.8 inches" },
+        { "key": "Battery Life", "value": "30 hours" },
+        { "key": "Camera", "value": "108 MP" },
+        { "key": "Storage", "value": "256 GB" },
+        { "key": "RAM", "value": "12 GB" }
+      ],
+      "availability": true,
+      "rating": 4.8,
+      "other": {
+        "warranty": "2 years",
+        "color": "Silver",
+        "brand": "PrimeMobile",
+        "model_number": "Z20-2023"
+      }
+    },
+    {
+      "product_id": "M004",
+      "product_title": "Smartphone Lite A3",
+      "product_image": "https://i.ibb.co.com/KbkZRYG/Xiaomi-Mi-A3-Lite-300x300.webp",
+      "category": "Mobile",
+      "price": 150.00,
+      "description": "Budget-friendly smartphone with essential features.",
+      "specification": [
+        { "key": "Screen Size", "value": "5.5 inches" },
+        { "key": "Battery Life", "value": "15 hours" },
+        { "key": "Camera", "value": "8 MP" },
+        { "key": "Storage", "value": "32 GB" },
+        { "key": "RAM", "value": "3 GB" }
+      ],
+      "availability": false,
+      "rating": 4.1,
+      "other": {
+        "warranty": "1 year",
+        "color": "Red",
+        "brand": "BudgetTech",
+        "model_number": "A3-2023"
+      }
+    },
+    {
+      "product_id": "M005",
+      "product_title": "Smartphone Max S",
+      "product_image": "https://i.ibb.co.com/z51zKYQ/images-2.jpg",
+      "category": "Mobile",
+      "price": 550.00,
+      "description": "High-storage smartphone ideal for work and entertainment.",
+      "specification": [
+        { "key": "Screen Size", "value": "6.3 inches" },
+        { "key": "Battery Life", "value": "28 hours" },
+        { "key": "Camera", "value": "16 MP" },
+        { "key": "Storage", "value": "512 GB" },
+        { "key": "RAM", "value": "8 GB" }
+      ],
+      "availability": true,
+      "rating": 4.4,
+      "other": {
+        "warranty": "2 years",
+        "color": "Gold",
+        "brand": "SuperPhone",
+        "model_number": "MaxS-2023"
+      }
+    },
+    {
+      "product_id": "M006",
+      "product_title": "Smartphone One XR",
+      "product_image": "https://i.ibb.co.com/YW3F1Tg/images-3.jpg",
+      "category": "Mobile",
+      "price": 400.00,
+      "description": "Feature-rich smartphone with robust performance and great battery life.",
+      "specification": [
+        { "key": "Screen Size", "value": "6.1 inches" },
+        { "key": "Battery Life", "value": "25 hours" },
+        { "key": "Camera", "value": "20 MP" },
+        { "key": "Storage", "value": "128 GB" },
+        { "key": "RAM", "value": "6 GB" }
+      ],
+      "availability": true,
+      "rating": 4.2,
+      "other": {
+        "warranty": "1 year",
+        "color": "Green",
+        "brand": "EliteTech",
+        "model_number": "OneXR-2023"
+      }
+    },
+    {
+      "product_id": "L001",
+      "product_title": "Laptop ProBook 15",
+      "product_image": "https://i.ibb.co.com/XLcRvVn/mi-air-003-500x500.jpg",
+      "category": "Laptop",
+      "price": 850.00,
+      "description": "High-performance laptop suitable for professionals and students.",
+      "specification": [
+        { "key": "Processor", "value": "Intel i7" },
+        { "key": "RAM", "value": "16 GB" },
+        { "key": "Storage", "value": "512 GB SSD" },
+        { "key": "Display", "value": "15.6 inches" }
+      ],
+      "availability": true,
+      "rating": 4.6,
+      "other": {
+        "warranty": "2 years",
+        "color": "Black",
+        "brand": "WorkMaster",
+        "model_number": "ProBook-2023"
+      }
+    },
+    {
+      "product_id": "L002",
+      "product_title": "Laptop Ultrabook Air",
+      "product_image": "https://i.ibb.co.com/ykS6tRL/hp-probook-450-g10-44.jpg",
+      "category": "Laptop",
+      "price": 1050.00,
+      "description": "Lightweight ultrabook with powerful processing and sleek design.",
+      "specification": [
+        { "key": "Processor", "value": "Intel i5" },
+        { "key": "RAM", "value": "8 GB" },
+        { "key": "Storage", "value": "256 GB SSD" },
+        { "key": "Display", "value": "13.3 inches" }
+      ],
+      "availability": true,
+      "rating": 4.7,
+      "other": {
+        "warranty": "1 year",
+        "color": "Silver",
+        "brand": "LiteSpeed",
+        "model_number": "Air-2023"
+      }
+    },
+    {
+      "product_id": "T001",
+      "product_title": "Smart TV 55-inch 4K",
+      "product_image": "https://i.ibb.co.com/5hDh9JP/OLED42-C3-PSA-DZ-02.jpg",
+      "category": "TV",
+      "price": 650.00,
+      "description": "Ultra HD 4K smart TV with streaming and voice control.",
+      "specification": [
+        { "key": "Screen Size", "value": "55 inches" },
+        { "key": "Resolution", "value": "4K" },
+        { "key": "Smart Features", "value": "Yes" },
+        { "key": "HDMI Ports", "value": "3" }
+      ],
+      "availability": true,
+      "rating": 4.5,
+      "other": {
+        "warranty": "1 year",
+        "color": "Black",
+        "brand": "VisionPlus",
+        "model_number": "TV4K55-2023"
+      }
+    },
+    {
+      "product_id": "T002",
+      "product_title": "Smart TV 65-inch OLED",
+      "product_image": "https://i.ibb.co.com/RHgNyQX/samsung-65au7700-2-1-1.jpg",
+      "category": "TV",
+      "price": 1200.00,
+      "description": "Premium OLED TV with exceptional color accuracy and smart features.",
+      "specification": [
+        { "key": "Screen Size", "value": "65 inches" },
+        { "key": "Resolution", "value": "4K OLED" },
+        { "key": "Smart Features", "value": "Yes" },
+        { "key": "HDMI Ports", "value": "4" }
+      ],
+      "availability": false,
+      "rating": 4.9,
+      "other": {
+        "warranty": "2 years",
+        "color": "Black",
+        "brand": "ColorMax",
+        "model_number": "OLED65-2023"
+      }
+    }
+  ]
+  
