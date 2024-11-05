@@ -9,11 +9,10 @@ const Gedgets = ({ categories }) => {
             <div className="flex justify-center mt-8">
                 <div className="w-1/6">
                     <div className='bg-white text-white p-6 rounded'>
-
                         {categories.categories.map((category, ibx) => (
                             <div >
-                                <NavLink className='bg-gray-200 block py-1 px-3 rounded-lg text-gray-800 mt-2'
-                                 key={ibx} to={`/category/${category.name}`}> {category.name}</NavLink>
+                                <NavLink key={ibx} className='bg-gray-200 block py-1 px-3 rounded-lg text-gray-800 mt-2'
+                                     to={`/category/${category.name}`}> {category.name}</NavLink>
                             </div>
                         ))}
 

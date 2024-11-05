@@ -1,11 +1,11 @@
 import React from 'react';
 import { TiDelete } from "react-icons/ti";
 import { removeFavourite } from '../utility';
+import { useLoaderData } from 'react-router-dom';
 
 
 const SingleCard = ({ favourite, handleRemove }) => {
     const { product_image, product_title, price, description, product_id } = favourite;
-  
     return (
         <div>
             <div className="max-w-full bg-white shadow-md rounded-lg overflow-hidden relative flex my-3 items-center">
@@ -19,6 +19,7 @@ const SingleCard = ({ favourite, handleRemove }) => {
                     <p className="text-gray-700 font-bold mt-2">
                         Price: ${price}
                     </p>
+                    
                 </div>
                 <button onClick={() => handleRemove(product_id)} className="absolute top-4 right-4 text-4xl text-gray-500 hover:text-red-500 transition-colors duration-200">
                     <TiDelete />

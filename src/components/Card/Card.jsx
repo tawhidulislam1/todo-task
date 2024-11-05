@@ -13,7 +13,7 @@ const Card = ({all}) => {
                 </figure>
                 <div className="card-body text-left">
                     <h2 className="card-title">{product_title}!</h2>
-                    <p>{price}</p>
+                    <p>Price: ${price}</p>
                     <div className="card-actions justify-end">
                         
                         <Link to={`/categories/${product_id}`} className="btn btn-outline btn-primary">View More</Link>
