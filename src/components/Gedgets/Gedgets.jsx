@@ -13,7 +13,7 @@ const Gedgets = ({ categories }) => {
                         {categories.categories.map(category => (
                             <div >
                                 <NavLink className='bg-gray-200 block py-1 px-3 rounded-lg text-gray-800 mt-2'
-                                 key={category.id} to={`/category/${category.name}`}> {category.name}</NavLink>
+                                 key={category.name} to={`/category/${category.name}`}> {category.name}</NavLink>
                             </div>
                         ))}
 
