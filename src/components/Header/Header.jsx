@@ -1,17 +1,21 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import Hero from '../Hero/Hero';
 import { GiSelfLove } from "react-icons/gi";
 import { FaCartPlus } from "react-icons/fa";
 const Header = () => {
+    const location = useLocation()
+
     const links =
         <>
             <li><NavLink to={'/'}>Home</NavLink></li>
             <li><NavLink to={'/Statistics'}>Statistics</NavLink></li>
             <li><NavLink to={'/dashbaord'}>Dashbaord</NavLink></li>
         </>
+        const navbarColor = location.pathname === '/' ? 'bg-[#9538E2] text-white' : 'bg-white text-gray-800';
     return (
-        <div className='bg-[#9538E2] text-white max-w-screen-xl mt-4 rounded-t-lg mx-auto'>
+        
+        <div className={`${navbarColor}  max-w-screen-xl mt-4 rounded-t-lg mx-auto`}>
             <div className="navbar max-w-screen-xl mx-auto py-4">
                 <div className="navbar-start">
                     <div className="dropdown">

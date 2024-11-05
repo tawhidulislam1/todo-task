@@ -45,4 +45,16 @@ const addToFavourite = (product) => {
   localStorage.setItem("favourite", JSON.stringify(favourite));
 };
 
-export { AddToCart,addToFavourite, getAllAddToCart , GetAllFavourite };
+
+// remove form localStorage
+const removeFavourite = id =>{
+    const favourite = GetAllFavourite();
+    const rimining = favourite.filter(product=> product.product_id != id)
+    localStorage.setItem("favourite", JSON.stringify(rimining));
+}
+const removeAddToCart = id =>{
+    const Cart = getAllAddToCart();
+    const rimining = Cart.filter(product=> product.product_id != id)
+    localStorage.setItem("Add-To-Cart", JSON.stringify(rimining));
+}
+export { AddToCart,addToFavourite, getAllAddToCart , removeFavourite , removeAddToCart, GetAllFavourite };

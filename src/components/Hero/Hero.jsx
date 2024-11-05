@@ -1,5 +1,6 @@
 import React from 'react';
 import image from '../../assets/banner.jpg'
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
     return (
@@ -11,7 +12,7 @@ const Hero = () => {
                         <p className="py-6">
                             Explore the latest gadgets that will take your experience to the next level. From smart devices to the coolest accessories, we have it all!
                         </p>
-                        <button className="btn btn-primary">Shop Now</button>
+                        <Link to='/dashbaord' className="btn btn-primary">Shop Now</Link>
                     </div>
                 </div>
                 <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">

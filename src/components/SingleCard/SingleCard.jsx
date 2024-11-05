@@ -1,9 +1,11 @@
 import React from 'react';
 import { TiDelete } from "react-icons/ti";
+import { removeFavourite } from '../utility';
 
 
-const SingleCard = ({ favourite }) => {
-    const { product_image, product_title, price, description } = favourite;
+const SingleCard = ({ favourite, handleRemove }) => {
+    const { product_image, product_title, price, description, product_id } = favourite;
+  
     return (
         <div>
             <div className="max-w-full bg-white shadow-md rounded-lg overflow-hidden relative flex my-3 items-center">
@@ -18,7 +20,7 @@ const SingleCard = ({ favourite }) => {
                         Price: ${price}
                     </p>
                 </div>
-                <button className="absolute top-4 right-4 text-4xl text-gray-500 hover:text-red-500 transition-colors duration-200">
+                <button onClick={() => handleRemove(product_id)} className="absolute top-4 right-4 text-4xl text-gray-500 hover:text-red-500 transition-colors duration-200">
                     <TiDelete />
 
                 </button>

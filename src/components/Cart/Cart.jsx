@@ -1,18 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getAllAddToCart, removeAddToCart } from '../utility';
+import { useLoaderData } from 'react-router-dom';
+import SingleCard from '../SingleCard/SingleCard';
 
 const Cart = () => {
     const [carts, setCarts] = useState([]);
     const allCarts = useLoaderData();
     useEffect(() => {
-        const storefavourite = GetAllFavourite();
-        const allStoreFavourite = storefavourite.map(id => `${id.product_id}`);
-        const favouriteList = allFavourite.filter(product => allStoreFavourite.includes(product.product_id))
-        setFavourite(favouriteList);
-    }, [])
+        const storeCart = getAllAddToCart();
+        const allStoreCarts = storeCart.map(id => `${id.product_id}`);
+        const cartList = allCarts.filter(product => allStoreCarts.includes(product.product_id))
+        setCarts(cartList);
+    }, [allCarts, setCarts])
+
+    const handleRemove = (id) => {
+        removeAddToCart(id);
+        const storeCart = getAllAddToCart();
+        const allStoreCarts = storeCart.map(id => `${id.product_id}`);
+        const cartList = allCarts.filter(product => allStoreCarts.includes(product.product_id))
+        setCarts(cartList);
+    }
     return (
 
         <div>
-            <h3>adflasjdflas</h3>
+            
+            <div>
+                {
+                    carts.map((favourite, idx) => <SingleCard key={idx} handleRemove={handleRemove} favourite={favourite}></SingleCard>)
+                }
+            </div>
         </div>
     );
 };
