@@ -8,6 +8,7 @@ const Header = () => {
         <>
             <li><NavLink to={'/'}>Home</NavLink></li>
             <li><NavLink to={'/Statistics'}>Statistics</NavLink></li>
+            <li><NavLink to={'/dashbaord'}>Dashbaord</NavLink></li>
         </>
     return (
         <div className='bg-[#9538E2] text-white max-w-screen-xl mt-4 rounded-t-lg mx-auto'>

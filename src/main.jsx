@@ -10,6 +10,9 @@ import AllCard from './components/Allcards/allCard';
 import Statistics from './Statistics/Statistics';
 import Root from './components/Root/Root';
 import ProductDetail from './components/ProductDetail/ProductDetail';
+import Dashboard from './components/Dashbaord/Dashboard';
+import Cart from './components/Cart/Cart';
+import Favourite from './components/Favourite/Favourite';
 
 const router = createBrowserRouter([
   {
@@ -41,6 +44,22 @@ const router = createBrowserRouter([
       {
         path: "/Statistics",
         element: <Statistics></Statistics>,
+      },
+      {
+        path: "/dashbaord",
+        element:<Dashboard></Dashboard>,
+        children:[
+          {
+            path:'/dashbaord/cart',
+            loader: () => fetch('../data.json'),
+            element:<Cart></Cart>
+          },
+          {
+            path:'/dashbaord/favourite',
+            loader: () => fetch('../data.json'),
+            element:<Favourite></Favourite>
+          }
+        ]
       }
     ]
   }

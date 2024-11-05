@@ -23,7 +23,7 @@ const AddToCart = (product) => {
 };
 
 // get Favourate
-const getAllFavourite = () => {
+const GetAllFavourite = () => {
   const all = localStorage.getItem("favourite");
   if (all) {
     const allCart = JSON.parse(all);
@@ -34,7 +34,7 @@ const getAllFavourite = () => {
 };
 //add Favourate in localstorage
 const addToFavourite = (product) => {
-  const favourite = getAllFavourite();
+  const favourite = GetAllFavourite();
   const isExist = favourite.find(
     (products) => products.product_id === product.product_id
   );
@@ -45,4 +45,4 @@ const addToFavourite = (product) => {
   localStorage.setItem("favourite", JSON.stringify(favourite));
 };
 
-export { AddToCart,addToFavourite };
+export { AddToCart,addToFavourite, getAllAddToCart , GetAllFavourite };
