@@ -6,10 +6,10 @@ const Header = () => {
     const links =
         <>
             <li><NavLink to={'/'}>Home</NavLink></li>
-            <li><a>Item 3</a></li>
+            <li><NavLink to={'/Statistics'}>Statistics</NavLink></li>
         </>
     return (
-        <div className='bg-[#9538E2] text-white max-w-screen-2xl my-4 rounded-2xl mx-auto'>
+        <div className='bg-[#9538E2] text-white max-w-screen-xl mt-4 rounded-t-lg mx-auto'>
             <div className="navbar max-w-screen-xl mx-auto py-4">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -45,10 +45,9 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    <a className="btn">Shop Now</a>
                 </div>
             </div>
-            <Hero></Hero>
         </div>
     );
 };
