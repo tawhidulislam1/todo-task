@@ -6,7 +6,6 @@ const AllCard = () => {
     const data = useLoaderData();
 
     const { category } = useParams();
-    console.log(category);
     const [allcard, setAllcard] = useState([]);
     useEffect(() => {
         if (category && category !== "All") {

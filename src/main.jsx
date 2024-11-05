@@ -9,6 +9,7 @@ import Home from './components/Home/Home';
 import AllCard from './components/Allcards/allCard';
 import Statistics from './Statistics/Statistics';
 import Root from './components/Root/Root';
+import ProductDetail from './components/ProductDetail/ProductDetail';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,11 @@ const router = createBrowserRouter([
             loader:() => fetch('../data.json'),
           }
         ]
+      },
+      {
+        path: "/categories/:product_id",
+        loader: () => fetch('../data.json'),
+        element: <ProductDetail></ProductDetail>
       },
       {
         path: "/Statistics",

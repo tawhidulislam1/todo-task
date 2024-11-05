@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Hero from '../Hero/Hero';
-
+import { GiSelfLove } from "react-icons/gi";
+import { FaCartPlus } from "react-icons/fa";
 const Header = () => {
     const links =
         <>
@@ -44,8 +45,9 @@ const Header = () => {
                         }
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <a className="btn">Shop Now</a>
+                <div className="navbar-end flex gap-1">
+                <button className="btn rounded-full text-lg border"><FaCartPlus /></button>
+                <button className="btn rounded-full text-xl border"><GiSelfLove /></button>
                 </div>
             </div>
         </div>
