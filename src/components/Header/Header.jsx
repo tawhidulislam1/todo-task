@@ -1,8 +1,9 @@
-import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, NavLink, useLoaderData, useLocation } from 'react-router-dom';
 import Hero from '../Hero/Hero';
 import { GiSelfLove } from "react-icons/gi";
 import { FaCartPlus } from "react-icons/fa";
+import { getAllAddToCart } from '../utility';
 const Header = () => {
     const location = useLocation()
 
@@ -11,10 +12,13 @@ const Header = () => {
             <li><NavLink to={'/'}>Home</NavLink></li>
             <li><NavLink to={'/Statistics'}>Statistics</NavLink></li>
             <li><NavLink to={'/dashbaord'}>Dashbaord</NavLink></li>
+            <li><NavLink to={'/about'}>About</NavLink></li>
         </>
-        const navbarColor = location.pathname === '/' ? 'bg-[#9538E2] text-white' : 'bg-white text-gray-800';
+ 
+    
+    const navbarColor = location.pathname === '/' ? 'bg-[#9538E2] text-white' : 'bg-white text-gray-800';
     return (
-        
+
         <div className={`${navbarColor}  max-w-screen-xl mt-4 rounded-t-lg mx-auto`}>
             <div className="navbar max-w-screen-xl mx-auto py-4">
                 <div className="navbar-start">
@@ -51,8 +55,13 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end flex gap-1">
-                <button className="btn rounded-full text-lg border"><FaCartPlus /></button>
-                <button className="btn rounded-full text-xl border"><GiSelfLove /></button>
+                    <Link to='dashbaord/cart' className="relative btn rounded-full text-lg border border-gray-300 p-3 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <FaCartPlus className="text-blue-600" />
+                        <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full px-2">
+                           0
+                        </div>
+                    </Link>
+                    <Link to='dashbaord/favourite' className="btn rounded-full text-xl border"><GiSelfLove /></Link>
                 </div>
             </div>
         </div>

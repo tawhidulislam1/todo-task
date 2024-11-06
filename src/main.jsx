@@ -14,16 +14,20 @@ import Dashboard from './components/Dashbaord/Dashboard';
 import Cart from './components/Cart/Cart';
 import Favourite from './components/Favourite/Favourite';
 import ErrorPage from './components/Error/Error';
-
+import About from './components/About/About';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const router = createBrowserRouter([
   {
     path: '/',
     element:<Root></Root>,
+    loader:() => fetch('../data.json'),
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
         element: <Home></Home>,
+        
         loader: () => fetch('../categories.json'),
         children: [
           {
@@ -67,12 +71,17 @@ const router = createBrowserRouter([
             element:<Favourite></Favourite>
           }
         ]
-      }
+      },
+      {
+        path: "/about",
+        element: <About></About>,
+      },
     ]
   }
 ]);
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <RouterProvider router={router} />
+    <ToastContainer />
   </StrictMode>,
 )

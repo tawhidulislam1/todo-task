@@ -1,21 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GiSelfLove } from "react-icons/gi";
 import { FaCartPlus } from "react-icons/fa";
 
 
 import { useLoaderData, useParams } from 'react-router-dom';
-import { AddToCart, addToFavourite } from '../utility';
+import { AddToCart, addToFavourite, GetAllFavourite } from '../utility';
 const ProductDetail = () => {
     const { product_id } = useParams();
     const data = useLoaderData();
     const productData = data.find(product => product.product_id === product_id);
     const { product_title, product_image, product_id: id, price, description, specification, rating } = productData;
-
-    const handleAddToCart = (productData)=>{
+    
+    
+    const handleAddToCart = (productData) => {
         AddToCart(productData);
     }
-    const handlefavourite = (productData)=>{
-        addToFavourite(productData);
+    const [isFavourite, setFavourite] = useState(false);
+    const handlefavourite = (productData) => {
+        addToFavourite(productData); setFavourite(true)
     }
     return (
         <div>
@@ -54,15 +56,15 @@ const ProductDetail = () => {
                                     type="radio"
                                     name="rating-2"
                                     className="mask mask-star-2 bg-orange-400"
-                                     />
+                                />
                                 <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                                 <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                                 <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
                                 <h3 className="badge">{rating}</h3>
                             </div>
                             <div className="flex gap-2">
-                                <button onClick={()=> handleAddToCart(productData)} className="btn text-lg">Add To Cert<FaCartPlus /></button>
-                                <button onClick={()=> handlefavourite(productData)}  className="btn text-xl"><GiSelfLove /></button>
+                                <button onClick={() => handleAddToCart(productData)} className="btn text-lg">Add To Cert<FaCartPlus /></button>
+                                <button onClick={() => handlefavourite(productData)} disabled={isFavourite} className="btn text-xl"><GiSelfLove /></button>
                             </div>
 
                         </div>

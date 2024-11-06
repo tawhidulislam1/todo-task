@@ -3,7 +3,7 @@ import { GetAllFavourite, removeFavourite } from '../utility';
 import { useLoaderData, useLocation } from 'react-router-dom';
 import SingleCard from '../SingleCard/SingleCard';
 import { HiOutlineSortAscending } from "react-icons/hi";
-
+import { toast } from 'react-toastify';
 
 const Favourite = () => {
     const [favourites, setFavourite] = useState([]);
@@ -20,7 +20,6 @@ const Favourite = () => {
         const allStoreFavourite = storefavourite.map(id => `${id.product_id}`);
         const favouriteList = allFavourite.filter(product => allStoreFavourite.includes(product.product_id))
         setFavourite(favouriteList);
-        alert('remove success fully')
     }
     const { pathname } = useLocation();
    

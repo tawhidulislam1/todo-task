@@ -1,3 +1,5 @@
+import { toast  } from 'react-toastify';
+
 // get add to cart
 const getAllAddToCart = () => {
   const all = localStorage.getItem("Add-To-Cart");
@@ -16,10 +18,11 @@ const AddToCart = (product) => {
     (products) => products.product_id === product.product_id
   );
   if (isExist) {
-    return alert("ALready Add To Cart Done");
+    return toast.error("This Is Already In The Card");
   }
   addtocart.push(product);
   localStorage.setItem("Add-To-Cart", JSON.stringify(addtocart));
+  toast.success("Add To The Cart SuccessFully")
 };
 
 // get Favourate
@@ -39,10 +42,11 @@ const addToFavourite = (product) => {
     (products) => products.product_id === product.product_id
   );
   if (isExist) {
-    return alert("ALready Add To Cart Done");
+    return toast.error("ALready Add To Cart Done");
   }
   favourite.push(product);
   localStorage.setItem("favourite", JSON.stringify(favourite));
+  toast.success("Add To The Favourite SuccessFully")
 };
 
 
@@ -51,10 +55,13 @@ const removeFavourite = id =>{
     const favourite = GetAllFavourite();
     const rimining = favourite.filter(product=> product.product_id != id)
     localStorage.setItem("favourite", JSON.stringify(rimining));
+    return toast.error("remove Successful");
 }
 const removeAddToCart = id =>{
     const Cart = getAllAddToCart();
     const rimining = Cart.filter(product=> product.product_id != id)
     localStorage.setItem("Add-To-Cart", JSON.stringify(rimining));
+    return toast.error("remove Successful");
+
 }
 export { AddToCart,addToFavourite, getAllAddToCart , removeFavourite , removeAddToCart, GetAllFavourite };
