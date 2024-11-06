@@ -3,14 +3,19 @@ import Header from '../Header/Header';
 import Gedgets from '../Gedgets/Gedgets';
 import { useLoaderData } from 'react-router-dom';
 import Hero from '../Hero/Hero';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
-    const  categories = useLoaderData();
+
+    const categories = useLoaderData();
     return (
 
         <div className='max-w-screen-xl mx-auto '>
-           <Hero></Hero>
-           <Gedgets categories={categories}></Gedgets>
+            <Helmet>
+                <title>Gadget Havean || Home</title>
+            </Helmet>
+            <Hero></Hero>
+            <Gedgets categories={categories}></Gedgets>
 
         </div>
     );

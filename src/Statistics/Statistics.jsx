@@ -1,11 +1,12 @@
 import { Helmet } from 'react-helmet-async';
 
 const Statistics = () => {
-    <Helmet>
-        <title>Home - My Website</title>
-    </Helmet>
     return (
         <div>
+            
+            <Helmet>
+                <title>Gadget Havean || Statistics</title>
+            </Helmet>
             <h3 className='text-center my-5'>Statistics</h3>
         </div>
     );

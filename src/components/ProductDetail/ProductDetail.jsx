@@ -6,8 +6,10 @@ import { FaCartPlus } from "react-icons/fa";
 import { useLoaderData, useParams } from 'react-router-dom';
 import { AddToCart, addToFavourite, GetAllFavourite } from '../utility';
 import StarRating from "../StarRating/StarRating"
+import { Helmet } from 'react-helmet-async';
 
 const ProductDetail = () => {
+
     const { product_id } = useParams();
     const data = useLoaderData();
     const productData = data.find(product => product.product_id === product_id);
@@ -27,6 +29,9 @@ const ProductDetail = () => {
     return (
 
         <div>
+            <Helmet>
+                <title>Gadget Havean || Product Detail</title>
+            </Helmet>
             <div className='bg-[#9538E2] text-white text-center py-6'>
                 <h2 className='text-3xl'>Product Details</h2>
                 <p> Explore the latest gadgets that will take your experience to the next level. From smart devices to the coolest accessories, we have it all!</p>

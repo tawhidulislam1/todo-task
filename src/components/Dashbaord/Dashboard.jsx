@@ -1,12 +1,16 @@
 import React from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { HiOutlineSortAscending } from "react-icons/hi";
+import { Helmet } from 'react-helmet-async';
 
 
 const Dashboard = () => {
     const { pathname } = useLocation();
     return (
         <div>
+            <Helmet>
+                <title>Gadget Havean || Dashboard</title>
+            </Helmet>
             <div className='bg-[#9538E2] text-white text-center py-6'>
                 <h2 className='text-3xl'>Dashboard</h2>
                 <p> Explore the latest gadgets that will take your experience to the next level. From smart devices to the coolest accessories, we have it all!</p>
@@ -17,8 +21,8 @@ const Dashboard = () => {
                     </NavLink>
                 </div>
             </div>
-            
-            <Outlet></Outlet>         
+
+            <Outlet></Outlet>
         </div>
     );
 };

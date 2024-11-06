@@ -1,9 +1,13 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 
 const About = () => {
     return (
         <div className="flex flex-col items-center justify-center py-12 px-6 bg-gray-100">
+            <Helmet>
+                <title>Gadget Havean || About</title>
+            </Helmet>
             <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row">
                 {/* Image Section */}
                 <div className="md:w-1/3">
