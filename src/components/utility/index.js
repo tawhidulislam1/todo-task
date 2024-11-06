@@ -66,8 +66,8 @@ const removeAddToCart = id =>{
 }
 
 const removeAllProduct = () =>{
-  const Cart = getAllAddToCart();
-  Cart = localStorage.removeItem("Add-To-Cart");
+  
+  localStorage.removeItem("Add-To-Cart");
 
 }
 export { AddToCart,addToFavourite, getAllAddToCart , removeFavourite , removeAllProduct , removeAddToCart, GetAllFavourite };
