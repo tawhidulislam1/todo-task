@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getAllAddToCart, removeAddToCart } from '../utility';
+import { getAllAddToCart, removeAddToCart, removeAllProduct } from '../utility';
 import { useLoaderData, useLocation } from 'react-router-dom';
 import SingleCard from '../SingleCard/SingleCard';
 import { HiOutlineSortAscending } from "react-icons/hi";
@@ -38,6 +38,10 @@ const Cart = () => {
         setTotalPrice(totalPrice);
     }, [carts])
 
+    const handlePurchase = () => {
+        removeAllProduct();
+    }
+    
     return (
 
         <div>
@@ -55,7 +59,7 @@ const Cart = () => {
                             <button onClick={() => handleSort('price')} className="btn btn-outline btn-primary">
                                 Sort by Price <HiOutlineSortAscending />
                             </button>
-                            <button className="btn btn-primary">Purchase</button>
+                            <a onClick={() => handlePurchase()} className="btn btn-primary" href="#modal">Purchase</a>
                         </div>
                     </div>
                 )}
@@ -67,6 +71,19 @@ const Cart = () => {
                 {
                     carts.map((favourite, idx) => <SingleCard key={idx} handleRemove={handleRemove} favourite={favourite}></SingleCard>)
                 }
+            </div>
+
+            {/* Put this part before </body> tag */}
+            <div className="modal" role="dialog" id="modal">
+                <div className="modal-box text-center">
+                    <img src="https://png.pngtree.com/png-vector/20220830/ourmid/pngtree-successfully-png-image_6130187.png" alt="" className='w-1/3 mx-auto' />
+                    <h3 className="text-lg font-bold">Payment Successfully!</h3>
+                    <p className="py-4">Thanks for purchasing.</p>
+                    <h3 className='text-lg font-bold'>Total purchasing : ${totalPrice}</h3>
+                    <div className="modal-action">
+                        <a href="/" className="btn">Close!</a>
+                    </div>
+                </div>
             </div>
         </div>
     );

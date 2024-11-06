@@ -18,7 +18,7 @@ const Dashboard = () => {
                 </div>
             </div>
             
-            <Outlet></Outlet>
+            <Outlet></Outlet>         
         </div>
     );
 };

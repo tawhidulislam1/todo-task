@@ -64,4 +64,10 @@ const removeAddToCart = id =>{
     return toast.error("remove Successful");
 
 }
-export { AddToCart,addToFavourite, getAllAddToCart , removeFavourite , removeAddToCart, GetAllFavourite };
+
+const removeAllProduct = () =>{
+  const Cart = getAllAddToCart();
+  Cart = localStorage.removeItem("Add-To-Cart");
+
+}
+export { AddToCart,addToFavourite, getAllAddToCart , removeFavourite , removeAllProduct , removeAddToCart, GetAllFavourite };
