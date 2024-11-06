@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TiDelete } from "react-icons/ti";
 import { removeFavourite } from '../utility';
 import { useLoaderData } from 'react-router-dom';
@@ -6,6 +6,8 @@ import { useLoaderData } from 'react-router-dom';
 
 const SingleCard = ({ favourite, handleRemove }) => {
     const { product_image, product_title, price, description, product_id } = favourite;
+    const [totalPrice , setTotalPrice] = useState([0]);
+    
     return (
         <div>
             <div className="max-w-full bg-white shadow-md rounded-lg overflow-hidden relative flex my-3 items-center">

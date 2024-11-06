@@ -23,13 +23,21 @@ const Cart = () => {
     }
     const { pathname } = useLocation();
     const handleSort = sortBy => {
-       
         const storeCart = getAllAddToCart();
         const allStoreCarts = storeCart.map(id => `${id.product_id}`);
         const cartList = allCarts.filter(product => allStoreCarts.includes(product.product_id))
         const sorted = cartList.sort((a, b) => b.price - a.price)
         setCarts(sorted);
     }
+
+    const [totalPrice, setTotalPrice] = useState(0);
+
+    useEffect(() => {
+        const findPrice = carts.map(product => product.price)
+        const totalPrice = findPrice.reduce((sum, price) => sum + price, 0)
+        setTotalPrice(totalPrice);
+    }, [carts])
+
     return (
 
         <div>
@@ -43,7 +51,8 @@ const Cart = () => {
                     <div className='flex justify-between  py-10 px-10'>
                         <h2 className="font-bold text-2xl">Cart</h2>
                         <div className="flex items-center gap-2">
-                        <button onClick={() => handleSort('price')} className="btn btn-outline btn-primary">
+                            <h3 className='text-xl font-bold'>Total Price : ${totalPrice}</h3>
+                            <button onClick={() => handleSort('price')} className="btn btn-outline btn-primary">
                                 Sort by Price <HiOutlineSortAscending />
                             </button>
                             <button className="btn btn-primary">Purchase</button>
