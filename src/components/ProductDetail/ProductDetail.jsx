@@ -5,13 +5,15 @@ import { FaCartPlus } from "react-icons/fa";
 
 import { useLoaderData, useParams } from 'react-router-dom';
 import { AddToCart, addToFavourite, GetAllFavourite } from '../utility';
+import StarRating from "../StarRating/StarRating"
+
 const ProductDetail = () => {
     const { product_id } = useParams();
     const data = useLoaderData();
     const productData = data.find(product => product.product_id === product_id);
     const { product_title, product_image, product_id: id, price, description, specification, rating } = productData;
-    
-    
+
+
     const handleAddToCart = (productData) => {
         AddToCart(productData);
     }
@@ -19,7 +21,11 @@ const ProductDetail = () => {
     const handlefavourite = (productData) => {
         addToFavourite(productData); setFavourite(true)
     }
+
+
+
     return (
+
         <div>
             <div className='bg-[#9538E2] text-white text-center py-6'>
                 <h2 className='text-3xl'>Product Details</h2>
@@ -51,15 +57,7 @@ const ProductDetail = () => {
                         <div>
                             <h3>Rattings: </h3>
                             <div className="rating">
-                                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-                                <input
-                                    type="radio"
-                                    name="rating-2"
-                                    className="mask mask-star-2 bg-orange-400"
-                                />
-                                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-                                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
-                                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" />
+                                <StarRating rating={rating} maxRating={5} /> {/* Use the StarRating component */}
                                 <h3 className="badge">{rating}</h3>
                             </div>
                             <div className="flex gap-2">
