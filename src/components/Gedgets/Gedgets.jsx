@@ -6,7 +6,7 @@ const Gedgets = ({ categories }) => {
     return (
         <div className="relative mt-52 text-center">
             <h2 className="text-center text-4xl font-bold">Explore Cutting-Edge Gadgets</h2>
-            <div className="flex justify-center mt-8">
+            <div className="flex justify-center mt-8 gap-2">
                 <div className="w-2/6 lg:w-1/6">
                     <div className='bg-white text-white p-6 rounded'>
                         {categories.categories.map((category, ibx) => (

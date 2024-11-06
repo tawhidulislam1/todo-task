@@ -20,25 +20,25 @@ import 'react-toastify/dist/ReactToastify.css';
 const router = createBrowserRouter([
   {
     path: '/',
-    element:<Root></Root>,
-    loader:() => fetch('../data.json'),
-    // errorElement: <ErrorPage></ErrorPage>,
+    element: <Root></Root>,
+    loader: () => fetch('../data.json'),
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
         element: <Home></Home>,
-        
+
         loader: () => fetch('../categories.json'),
         children: [
           {
             path: '/',
             element: <AllCard></AllCard>,
-            loader:() => fetch('../data.json'),
+            loader: () => fetch('../data.json'),
           },
           {
             path: '/category/:category',
             element: <AllCard></AllCard>,
-            loader:() => fetch('../data.json'),
+            loader: () => fetch('../data.json'),
           }
         ]
       },
@@ -53,22 +53,22 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashbaord",
-        element:<Dashboard></Dashboard>,
-        children:[
+        element: <Dashboard></Dashboard>,
+        children: [
           {
-            path:'/dashbaord',
+            path: '/dashbaord',
             loader: () => fetch('../data.json'),
-            element:<Cart></Cart>
+            element: <Cart></Cart>
           },
           {
-            path:'/dashbaord/cart',
+            path: '/dashbaord/cart',
             loader: () => fetch('../data.json'),
-            element:<Cart></Cart>
+            element: <Cart></Cart>
           },
           {
-            path:'/dashbaord/favourite',
+            path: '/dashbaord/favourite',
             loader: () => fetch('../data.json'),
-            element:<Favourite></Favourite>
+            element: <Favourite></Favourite>
           }
         ]
       },
