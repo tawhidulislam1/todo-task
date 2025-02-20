@@ -1,9 +1,22 @@
 
+import { useContext } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import AuthContext from '../../Context/AuthContext';
+import { toast } from 'react-toastify';
 
 const Header = () => {
     const location = useLocation()
-
+    const { user, logOut } = useContext(AuthContext);
+    console.log(user);
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                toast.success("YOur are logout now");
+            })
+            .catch((error) => {
+                console.error("Logout failed:", error);
+            });
+    }
     const links =
         <>
             <li><NavLink to={'/'}>Home</NavLink></li>
@@ -53,7 +66,9 @@ const Header = () => {
                 </div>
                 <div className="navbar-end flex gap-1">
 
-                    <Link to='login' className="btn rounded-full text-xl border">Login</Link>
+                    {
+                        user ? <button onClick={handleLogOut} className="btn rounded-full text-xl border">Logut</button> : <Link to='login' className="btn rounded-full text-xl border">Login</Link>
+                    }
                 </div>
             </div>
         </div>

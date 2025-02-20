@@ -26,11 +26,11 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(Auth, email, password);
     }
     const updateProfiles = (updatedData) => {
-        return updateProfile(auth.currentUser, updatedData);
+        return updateProfile(Auth.currentUser, updatedData);
     };
     const logOut = () => {
         setLoading(true)
-        return signOut(auth)
+        return signOut(Auth)
     }
     const authInfo = {
         createUser,
