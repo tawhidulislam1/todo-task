@@ -1,5 +1,4 @@
 import React from 'react';
-import image from '../../assets/banner.jpg'
 import { Link } from 'react-router-dom';
 
 const Hero = () => {
@@ -15,9 +14,7 @@ const Hero = () => {
                         <Link to='/dashbaord' className="btn btn-primary">Shop Now</Link>
                     </div>
                 </div>
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
-                    <img src={image} alt="Tech accessories banner" className="w-[90%] max-w-[910px] h-auto border border-spacing-1.5 rounded-md" />
-                </div>
+
             </div>
         </div>
     );

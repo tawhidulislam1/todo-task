@@ -15,7 +15,7 @@ const Home = () => {
                 <title>Gadget Havean || Home</title>
             </Helmet>
             <Hero></Hero>
-            <Gedgets categories={categories}></Gedgets>
+         
 
         </div>
     );

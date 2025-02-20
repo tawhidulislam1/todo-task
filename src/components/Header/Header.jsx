@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { Link, NavLink, useLoaderData, useLocation } from 'react-router-dom';
-import Hero from '../Hero/Hero';
-import { GiSelfLove } from "react-icons/gi";
-import { FaCartPlus } from "react-icons/fa";
-import { getAllAddToCart } from '../utility';
+
+import { Link, NavLink, useLocation } from 'react-router-dom';
+
 const Header = () => {
     const location = useLocation()
 
@@ -14,8 +11,8 @@ const Header = () => {
             <li><NavLink to={'/dashbaord'}>Dashbaord</NavLink></li>
             <li><NavLink to={'/about'}>About</NavLink></li>
         </>
- 
-    
+
+
     const navbarColor = location.pathname === '/' ? 'bg-[#9538E2] text-white' : 'bg-white text-gray-800';
     return (
 
@@ -45,7 +42,7 @@ const Header = () => {
                             }
                         </ul>
                     </div>
-                    <Link to={'/'}className="font-bold text-xl">Gadget Heaven</Link>
+                    <Link to={'/'} className="font-bold text-xl">Gadget Heaven</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -55,13 +52,8 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end flex gap-1">
-                    <Link to='dashbaord/cart' className="relative btn rounded-full text-lg border border-gray-300 p-3 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <FaCartPlus className="text-blue-600" />
-                        <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full px-2">
-                           0
-                        </div>
-                    </Link>
-                    <Link to='dashbaord/favourite' className="btn rounded-full text-xl border"><GiSelfLove /></Link>
+
+                    <Link to='dashbaord/favourite' className="btn rounded-full text-xl border">Login</Link>
                 </div>
             </div>
         </div>
