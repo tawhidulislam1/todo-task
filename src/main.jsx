@@ -14,6 +14,9 @@ import About from './components/About/About';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { HelmetProvider } from 'react-helmet-async';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
+import AuthProvider from './Context/AuthProvider';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -24,6 +27,15 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
       },
+
+      {
+        path: "/registers",
+        element: <Register></Register>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
       {
         path: "/about",
         element: <About></About>,
@@ -33,9 +45,11 @@ const router = createBrowserRouter([
 ]);
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <HelmetProvider>
-      <RouterProvider router={router} />
-      <ToastContainer />
-    </HelmetProvider>
+    <AuthProvider>
+      <HelmetProvider>
+        <RouterProvider router={router} />
+        <ToastContainer />
+      </HelmetProvider>
+    </AuthProvider>
   </StrictMode>,
 )

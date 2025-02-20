@@ -53,7 +53,7 @@ const Header = () => {
                 </div>
                 <div className="navbar-end flex gap-1">
 
-                    <Link to='dashbaord/favourite' className="btn rounded-full text-xl border">Login</Link>
+                    <Link to='login' className="btn rounded-full text-xl border">Login</Link>
                 </div>
             </div>
         </div>
