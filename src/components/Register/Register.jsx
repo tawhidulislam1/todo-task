@@ -1,42 +1,43 @@
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../../Context/AuthContext';
-import { toast } from 'react-toastify'; // Import toast for notifications
+import { toast } from 'react-toastify';
+import useAxiosPublic from '../../Hooks/AxiosPublic';
+import axios from 'axios';
+
 
 const Register = () => {
+    const axiosPublic = useAxiosPublic();
     const { createUser, setUser, updateProfiles } = useContext(AuthContext);
+
     const navigate = useNavigate()
-    const handleSubmit = e => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
-
         const password = form.password.value;
+        const userInfo = { name, email };
 
-        createUser(email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                setUser(user);  // Set the user globally in the context
-                console.log(user);
+        try {
+            // Step 1: Create Firebase User
+            const userCredential = await createUser(email, password);
+            const user = userCredential.user;
+            setUser(user);
 
-                updateProfiles({ displayName: name }) // Update the profile with the user's name
-                    .then(() => {
-                        toast.success("Account Created Successfully!"); // Success notification
-                        navigate('/');
-                    })
-                    .catch((error) => {
-                        console.error("Profile update failed:", error);
-                        toast.error("Account created, but profile update failed. Please update manually."); // Failure notification
-                    });
-            })
-            .catch((error) => {
-                const errorMessage = error.message;
-                console.error(errorMessage);
-                toast.error(`Registration failed: ${errorMessage}`); // Show error notification if registration fails
-            });
+            // Step 2: Update Firebase User Profile
+            await updateProfiles({ displayName: name });
 
-        console.log({ name, email, password });
+            // Step 3: Save User to Database AFTER profile update
+            await axios.post('http://localhost:5000/user', userInfo);
+
+            // Step 4: Show success message & navigate
+            toast.success("Account Created Successfully!");
+            navigate('/');
+        } catch (error) {
+            console.error("Error:", error);
+            toast.error(`Registration failed: ${error.message}`);
+        }
     };
 
     return (
