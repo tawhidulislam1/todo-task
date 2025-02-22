@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const TaskCard = ({ task, setActiveCard, index, updateTask, deleteTask }) => {
-    console.log(task.name, task);
+
     return (
         <div className="bg-white p-4 rounded-lg shadow-md mb-4 active:border active:border-black active:opacity-70 cursor-grab"
             draggable

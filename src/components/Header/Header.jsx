@@ -25,7 +25,7 @@ const Header = () => {
         </>
 
 
-    const navbarColor = location.pathname === '/' ? 'bg-[#9538E2] text-white' : 'bg-white text-gray-800';
+    const navbarColor = location.pathname === '/' ? 'bg-blue-600 text-white' : 'bg-white text-gray-800';
     return (
 
         <div className={`${navbarColor}  max-w-screen-xl mt-4 rounded-t-lg mx-auto`}>
@@ -54,7 +54,7 @@ const Header = () => {
                             }
                         </ul>
                     </div>
-                    <Link to={'/'} className="font-bold text-xl">Gadget Heaven</Link>
+                    <Link to={'/'} className="font-bold text-xl">Tasker</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

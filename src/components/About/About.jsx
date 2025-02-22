@@ -21,15 +21,13 @@ const About = () => {
                 <div className="md:w-2/3 p-8">
                     <h2 className="text-3xl font-bold text-gray-800 mb-4">About Us</h2>
                     <p className="text-gray-600 mb-4">
-                        Welcome to our e-commerce store! We are passionate about providing high-quality products that add value to your life. Our mission is to deliver exceptional customer experiences through a wide range of carefully curated products.
+                        Visibility is mission critical for project management, but everyone digests information differently.
                     </p>
                     <p className="text-gray-600 mb-4">
-                        Whether you're looking for the latest in tech, fashion, or home goods, our team is dedicated to bringing you the best. We strive to build trust with our customers through transparency, quality, and service excellence.
+                        That’s why we provide a range of views so you can visualize project progress, adjust resources quickly, and keep stakeholders informed. Try our industry-leading Gantt charts or easy-to-use Kanban boards.
                     </p>
                     <div className="mt-6">
-                        <Link to='/category/All' className="px-6 py-3 bg-[#9538E2] text-white rounded-full hover:bg-blue-700 transition duration-300">
-                            Shop Now
-                        </Link>
+                        <Link to='/task' className="btn btn-primary">Take a Task</Link>
                     </div>
                 </div>
             </div>

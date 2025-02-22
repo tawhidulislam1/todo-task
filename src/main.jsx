@@ -20,6 +20,7 @@ import AuthProvider from './Context/AuthProvider';
 import Task from './Task/Task';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import UpdateTask from './Task/UpdateTask';
+import PrivateRoute from './Route/PrivateRoute';
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -43,11 +44,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/task",
-        element: <Task></Task>,
+        element: <PrivateRoute><Task></Task></PrivateRoute>,
       },
       {
         path: "/updateTask/:id",
-        element: <UpdateTask></UpdateTask>,
+        element: <PrivateRoute><UpdateTask></UpdateTask></PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/task/${params.id}`)
       },
       {
