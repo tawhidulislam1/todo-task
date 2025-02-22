@@ -2,23 +2,62 @@ import axios from "axios";
 import App from "../components/App/App";
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-toastify";  // optional, for notifications
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 const Task = () => {
+    const [activeCard, setActiveCard] = useState(null)
+    const [task, setTasks] = useState([])
+
     // Fetch tasks from the server
     const { data: tasks = [], refetch } = useQuery({
         queryKey: ["task"],
         queryFn: async () => {
             const res = await axios.get("http://localhost:5000/task");
+            setTasks(res.data)
             return res.data;
         }
     });
+    const onDrop = (status, position) => {
+        console.log(`${activeCard} is goinng into place ${status} and at the ${position}`);
 
+        if (activeCard === null || activeCard === undefined) return;
+
+
+
+        try {
+            const taskTOMove = task[activeCard];
+            const upadteTask = task.filter((task, index) => index !== activeCard);
+            upadteTask.splice(position, 0, {
+                ...taskTOMove,
+                category: status,
+            })
+
+            // Send a PATCH request to update the task's category
+            const res = axios.patch(`http://localhost:5000/task/${activeCard}`, {
+                category: status, // Only update the category
+
+            });
+
+            console.log("Task updated successfully:", res);
+            refetch()
+            // Update local state after successful API call
+            setTasks(upadteTask);
+            console.log(status);
+
+            // Reset active card
+            setActiveCard(null);
+        } catch (error) {
+            console.error("Error updating task:", error);
+            toast.error("Failed to update task.");
+        }
+    }
     // Handle task submission
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const form = e.target;
-        const name = form.taskName.value;
+        const name = form.name.value;
         const description = form.description.value;
         const category = form.category.value;
         console.log({ name, description, category });
@@ -30,20 +69,45 @@ const Task = () => {
             .post("http://localhost:5000/task", newTask)
             .then((res) => {
                 console.log("Task added:", res.data);
-                // Reset form and close modal
+
                 form.reset();
                 document.getElementById("my_modal_5").close();
 
-                // Refetch the tasks after adding a new one
+
                 refetch();
-                toast.success("Task added successfully!");  // Optional: add a success toast
+                toast.success("Task added successfully!");
             })
             .catch((err) => {
                 console.error("Error adding task:", err);
                 alert("Failed to add task. Please try again!");
             });
     };
+    const deleteTask = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
 
+                axios.delete(`http://localhost:5000/task/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                            refetch();
+                        };
+                    });
+            }
+        });
+    };
     return (
         <div className="p-6 bg-gray-50 min-h-screen">
             <h2 className="text-3xl font-bold mb-6 text-gray-800 text-center">Task Management</h2>
@@ -65,7 +129,7 @@ const Task = () => {
                             <input
                                 type="text"
                                 placeholder="Enter task name"
-                                name="taskName"
+                                name="name"
                                 required
                                 className="w-full p-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
                             />
@@ -89,8 +153,8 @@ const Task = () => {
                                 <option value="Done">Done</option>
                             </select>
                         </div>
-                        <div className="flex justify-end gap-4 mt-6">
-                            <div className="modal-action mt-6">
+                        <div className="flex justify-end gap-4 ">
+                            <div className="modal-action mt-0">
                                 <form method="dialog">
                                     <button className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg shadow-sm hover:bg-blue-700 transition duration-200 ease-in-out">Close</button>
                                 </form>
@@ -107,7 +171,7 @@ const Task = () => {
             </dialog>
 
             {/* Render Task List */}
-            <App tasks={tasks} />
+            <App tasks={task} onDrop={onDrop} setActiveCard={setActiveCard} deleteTask={deleteTask} />
         </div>
     );
 };

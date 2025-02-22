@@ -19,6 +19,7 @@ import Register from './components/Register/Register';
 import AuthProvider from './Context/AuthProvider';
 import Task from './Task/Task';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import UpdateTask from './Task/UpdateTask';
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -43,6 +44,11 @@ const router = createBrowserRouter([
       {
         path: "/task",
         element: <Task></Task>,
+      },
+      {
+        path: "/updateTask/:id",
+        element: <UpdateTask></UpdateTask>,
+        loader: ({ params }) => fetch(`http://localhost:5000/task/${params.id}`)
       },
       {
         path: "/about",
