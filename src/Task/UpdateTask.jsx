@@ -18,7 +18,7 @@ const UpdateTask = () => {
             name, description, category
         }
 
-        axios.patch(`http://localhost:5000/task/update/${_id}`, updateInfo)
+        axios.patch(`https://gadget-heaven-server-alpha.vercel.app/task/update/${_id}`, updateInfo)
             .then(res => {
                 if (res.data.modifiedCount > 0) {
                     Swal.fire({

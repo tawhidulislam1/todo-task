@@ -29,7 +29,7 @@ const Register = () => {
             await updateProfiles({ displayName: name });
 
             // Step 3: Save User to Database AFTER profile update
-            await axios.post('http://localhost:5000/user', userInfo);
+            await axios.post('https://gadget-heaven-server-alpha.vercel.app/user', userInfo);
 
             // Step 4: Show success message & navigate
             toast.success("Account Created Successfully!");

@@ -13,18 +13,17 @@ const Task = () => {
     const { data: tasks = [], refetch } = useQuery({
         queryKey: ["task"],
         queryFn: async () => {
-            const res = await axios.get("http://localhost:5000/task");
+            const res = await axios.get("https://gadget-heaven-server-alpha.vercel.app/task");
             setTasks(res.data)
             return res.data;
         }
     });
-    const onDrop = (status, position) => {
+    const onDrop = async (status, position) => {
         console.log(`${activeCard} is goinng into place ${status} and at the ${position}`);
 
         if (activeCard === null || activeCard === undefined) return;
 
-
-
+        console.log(status, position);
         try {
             const taskTOMove = task[activeCard];
             const upadteTask = task.filter((task, index) => index !== activeCard);
@@ -34,7 +33,7 @@ const Task = () => {
             })
 
             // Send a PATCH request to update the task's category
-            const res = axios.patch(`http://localhost:5000/task/${activeCard}`, {
+            const res = await axios.patch(`https://gadget-heaven-server-alpha.vercel.app/task/${activeCard}`, {
                 category: status, // Only update the category
 
             });
@@ -66,7 +65,7 @@ const Task = () => {
 
         // Make the POST request to add a task
         axios
-            .post("http://localhost:5000/task", newTask)
+            .post("https://gadget-heaven-server-alpha.vercel.app/task", newTask)
             .then((res) => {
                 console.log("Task added:", res.data);
 
@@ -94,7 +93,7 @@ const Task = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axios.delete(`http://localhost:5000/task/${id}`)
+                axios.delete(`https://gadget-heaven-server-alpha.vercel.app/task/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             Swal.fire({

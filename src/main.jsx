@@ -49,7 +49,7 @@ const router = createBrowserRouter([
       {
         path: "/updateTask/:id",
         element: <PrivateRoute><UpdateTask></UpdateTask></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/task/${params.id}`)
+        loader: ({ params }) => fetch(`https://gadget-heaven-server-alpha.vercel.app/task/${params.id}`)
       },
       {
         path: "/about",
