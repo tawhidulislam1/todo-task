@@ -1,6 +1,19 @@
 import axios from "axios";
+import App from "../components/App/App";
+import { useQuery } from "@tanstack/react-query";
+import { toast } from "react-toastify";  // optional, for notifications
 
 const Task = () => {
+    // Fetch tasks from the server
+    const { data: tasks = [], refetch } = useQuery({
+        queryKey: ["task"],
+        queryFn: async () => {
+            const res = await axios.get("http://localhost:5000/task");
+            return res.data;
+        }
+    });
+
+    // Handle task submission
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -10,32 +23,35 @@ const Task = () => {
         const category = form.category.value;
         console.log({ name, description, category });
 
-        const newTask = {
-            name,
-            description,
-            category,
-        };
+        const newTask = { name, description, category };
 
-        axios.post('http://localhost:5000/task', newTask)
-            .then(res => {
-                console.log('Task added:', res.data);
+        // Make the POST request to add a task
+        axios
+            .post("http://localhost:5000/task", newTask)
+            .then((res) => {
+                console.log("Task added:", res.data);
+                // Reset form and close modal
                 form.reset();
-                document.getElementById('my_modal_5').close();
+                document.getElementById("my_modal_5").close();
+
+                // Refetch the tasks after adding a new one
+                refetch();
+                toast.success("Task added successfully!");  // Optional: add a success toast
             })
-            .catch(err => {
-                console.error('Error adding task:', err);
-                alert('Failed to add task. Please try again!');
+            .catch((err) => {
+                console.error("Error adding task:", err);
+                alert("Failed to add task. Please try again!");
             });
-        console.log(newTask);
     };
 
     return (
-        <div className="p-6 bg-gray-50 min-h-screen ">
+        <div className="p-6 bg-gray-50 min-h-screen">
             <h2 className="text-3xl font-bold mb-6 text-gray-800 text-center">Task Management</h2>
             <div className="flex justify-end">
                 <button
                     className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out"
-                    onClick={() => document.getElementById('my_modal_5').showModal()}>
+                    onClick={() => document.getElementById("my_modal_5").showModal()}
+                >
                     Add Task
                 </button>
             </div>
@@ -65,11 +81,11 @@ const Task = () => {
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
                             <select
-                                name='category'
+                                name="category"
                                 className="w-full p-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
                             >
-                                <option value="To-Do">To-Do</option>
-                                <option value="In Progress">In Progress</option>
+                                <option value="ToDo">To-Do</option>
+                                <option value="InProgress">In Progress</option>
                                 <option value="Done">Done</option>
                             </select>
                         </div>
@@ -87,9 +103,11 @@ const Task = () => {
                             </button>
                         </div>
                     </form>
-
                 </div>
             </dialog>
+
+            {/* Render Task List */}
+            <App tasks={tasks} />
         </div>
     );
 };

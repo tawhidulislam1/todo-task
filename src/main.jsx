@@ -18,6 +18,9 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import AuthProvider from './Context/AuthProvider';
 import Task from './Task/Task';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+const queryClient = new QueryClient();
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -51,10 +54,12 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
-      <HelmetProvider>
-        <RouterProvider router={router} />
-        <ToastContainer />
-      </HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <HelmetProvider>
+          <RouterProvider router={router} />
+          <ToastContainer />
+        </HelmetProvider>
+      </QueryClientProvider>
     </AuthProvider>
   </StrictMode>,
 )
