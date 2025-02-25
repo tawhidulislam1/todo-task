@@ -2,9 +2,11 @@ import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../../Context/AuthContext';
 import { toast } from 'react-toastify';
+import { FaGoogle } from 'react-icons/fa';
+import axios from 'axios';
 
 const Login = () => {
-    const { loginUser, setUser } = useContext(AuthContext);
+    const { loginUser, setUser, loginWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate()
     const handleSubmit = e => {
         e.preventDefault();
@@ -23,6 +25,21 @@ const Login = () => {
                 toast.error(`Login Unsuccessful: ${error.message}`);
             });
         console.log({ name, email, password });
+    };
+    const handleGoogleLogin = () => {
+        loginWithGoogle()
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                setUser(user);
+                // axios.post('https://gadget-heaven-server-alpha.vercel.app/user', userInfo);
+                navigate('/');
+                toast.success("Logged in with Google successfully!");
+            })
+            .catch((error) => {
+                console.error("Google Login Error:", error);
+                toast.error(error.message);
+            });
     };
     return (
         <div className="flex items-center justify-center min-h-screen bg-base-200 p-4">
@@ -59,6 +76,9 @@ const Login = () => {
                             <button className="btn btn-primary w-full">Login</button>
                         </div>
                     </form>
+                    <button className="btn mt-4" onClick={handleGoogleLogin}>
+                        <FaGoogle className="mr-2" /> Sign Up with Google
+                    </button>
                     <h2>Don't Have Account? <Link to='/registers' className='underline'>Create Account!</Link></h2>
                 </div>
             </div>
